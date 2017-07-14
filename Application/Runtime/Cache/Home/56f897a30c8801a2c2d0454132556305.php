@@ -1,0 +1,19 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表留言</title>
+</head>
+<body>
+    <div align="center">
+        <h1>发表留言</h1>
+        <form action="/messageboard/index.php/Home/Index/do_post" method="post">
+            <label for="content">留言内容</label><br>
+            <textarea name="content" id="content" rows="4" maxlength="100" required></textarea><br>
+            <button type="submit">发表</button>
+            <button type="reset">取消</button>
+        </form>
+    </div>
+
+</body>
+</html>

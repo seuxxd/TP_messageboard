@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+<h1>留言列表</h1>
+<div>
+    <empty name="Think.session.user.username">
+        <a href="{:U('User/login')}">登录</a>
+        <a href="{:U('User/register')}">注册</a>
+        <else/>
+        欢迎您，{$Think.session.user.username}
+        <a href="__URL__/post"><strong>发表留言</strong></a>
+        <a href="{:U('User/logout')}"><strong>退出登录</strong></a>
+    </empty>
+</div>
+
+<volist name="list" id="item">
+    <div>
+        {$item.content}<br>
+        留言者：{$item['username']}<br>
+        留言时间：{$item['createat']|date='Y-m-d H:i:s',###}
+        <eq name="Think.session.user.userId" value="$item['userid']">
+            <a href="{:U('delete?id='.$item['messageid'])}"
+               onclick="return confirm('删除么？')">删除</a>
+        </eq>
+    </div>
+</volist>
+    <p>
+        {$page}
+    </p>
+</body>
+</html>
